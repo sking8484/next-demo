@@ -27,7 +27,8 @@ img {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 10fr;
-  background-color: red;
+  grid-gap: 1px;
+  grid-template-columns: 1fr 9fr;
+
 }
 
