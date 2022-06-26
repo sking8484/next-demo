@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function App({ Component, pageProps }) {
   return <div className = 'wrapper'>
     <div className = 'navBar'>
-      <Link href = '/posts/'>
+      <Link href = '/graph/'>
         <a>Graph</a>
       </Link>
     </div>
