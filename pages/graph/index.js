@@ -11,7 +11,7 @@ export default function Graph(props) {
 export async function getStaticProps(context) {
   let data = await fetch('https://cdn.jsdelivr.net/npm/vega-datasets@1.31.1/data/cars.json')
   let jsonData = await data.json()
-  console.log(jsonData);
+
   return {
     props: {data:jsonData}
   }
