@@ -3,7 +3,7 @@ import Chart from '../../components/vl/Chart'
 export default function Graph(props) {
   return (
     <div className = "chart-container">
-      <Chart data = {props.data}/>
+      <Chart data = {props.data} xField = 'Miles_per_Gallon'/>
     </div>
   );
 }

@@ -7,8 +7,11 @@ export default function App({ Component, pageProps }) {
   return <>
   <div className = 'wrapper'>
     <div className = 'navBar'>
-      <Link href = '/graph/'>
+      <Link href = '/graph/1'>
         <a>Graph</a>
+      </Link>
+      <Link href = '/graph/2'>
+        <a>Graph 2</a>
       </Link>
     </div>
     <Component className='component' {...pageProps} />
