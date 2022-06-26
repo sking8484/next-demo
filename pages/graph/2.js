@@ -3,7 +3,7 @@ import Chart from '../../components/vl/Chart'
 export default function Graph(props) {
   return (
     <div className = "chart-container">
-      <Chart data = {props.data}/>
+      <Chart data = {props.data} xField = 'Miles_per_Gallon'/>
     </div>
   );
 }
@@ -11,7 +11,7 @@ export default function Graph(props) {
 export async function getStaticProps(context) {
   let data = await fetch('https://cdn.jsdelivr.net/npm/vega-datasets@1.31.1/data/cars.json')
   let jsonData = await data.json()
-  console.log(jsonData);
+
   return {
     props: {data:jsonData}
   }

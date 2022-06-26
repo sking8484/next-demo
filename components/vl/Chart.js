@@ -8,7 +8,6 @@ import config from './config.js'
 
 export default function Chart(props) {
   const chartRef = React.createRef();
-  console.log(vl);
   React.useEffect(() => {
     if(props.data.length>2){
     vl.register(vega, vegaLite, config);
@@ -16,18 +15,25 @@ export default function Chart(props) {
     vl.markPoint()
       .data(props.data)
       .encode(
-        vl.x().fieldQ('Miles_per_Gallon').scale({zero:false}),
+        vl.x().fieldQ(props.xField).scale({zero:false}),
         vl.y().fieldQ('Displacement').scale({zero:false}),
-        vl.tooltip(['Name','Cylinders']),
+        vl.tooltip(['Name','Cylinders', 'Origin']),
       	vl.color().fieldQ('Cylinders')
       		.legend({orient:'bottom',titleOrient:'left'}),
-      vl.column().fieldN('Origin')
+
       ).height(300).width(450)
       .render()
       .then((chart) => {
-        chartRef.current.appendChild(chart);
+        console.log(chartRef.current.children);
+        if(chartRef.current.children.length > 0) {
+          //pass
+        } else {
+          chartRef.current.appendChild(chart);
+        }
+
       });
   }});
+
 
   return <div className = "chart" ref={chartRef}></div>;
 }
