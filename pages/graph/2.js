@@ -1,9 +1,36 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import Chart from '../../components/vl/Chart'
+import { VegaLite } from 'react-vega';
+import React from 'react';
 export default function Graph(props) {
+
+  const [dimension, setDimensions] = React.useState({height:100,width:100});
+
+  React.useEffect(() => {
+    window.addEventListener('resize',() => {
+      clearTimeout(timeOutFunctionId);
+      var timeOutFunctionId = setTimeout(() => {
+          setDimensions({
+            ...dimension,
+            width:window.innerWidth,
+            height:window.innerHeight
+          },500)
+        }
+      )
+    })
+  }, [])
+
+  let spec = {
+    height:dimension.height /2,
+    width:dimension.width /2,
+    mark:'point',
+    encoding: {
+      x: {field: 'Miles_per_Gallon',type:'quantitative'},
+      y: {field: 'Cylinders', type: 'quantitative'}
+    },
+    data: {name:'data'}
+  }
   return (
     <div className = "chart-container">
-      <Chart data = {props.data} xField = 'Miles_per_Gallon'/>
+      <VegaLite spec = {spec} data = {{'data':props.data}}/>
     </div>
   );
 }
